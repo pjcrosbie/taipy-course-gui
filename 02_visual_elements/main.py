@@ -2,7 +2,7 @@ from taipy.gui import Gui
 import taipy.gui.builder as tgb
 import pandas as pd
 
-data = pd.read_csv("data.csv")
+data = pd.read_csv("../data.csv")
 chart_data = (
     data.groupby("State")["Sales"]
     .sum()
@@ -44,4 +44,14 @@ with tgb.Page() as page:
     tgb.html("br")
     tgb.table(data="{data}")
 
-Gui(page=page).run(title="Sales", dark_mode=False)
+Gui(page=page).run(
+        run_browser=False,
+        port=5555,
+        title="Sales",
+        dark_mode=True,
+        debug=True,
+        use_reloader=True,
+        watermark="dev",
+        favicon
+
+        )
